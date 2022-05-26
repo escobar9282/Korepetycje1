@@ -10,6 +10,6 @@ public class Main {
 
         }
 
-        System.out.println("The number you dare is " + sum);
+        System.out.println("The number you dare is" + sum);
     }
 }
