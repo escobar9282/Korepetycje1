@@ -1,4 +1,4 @@
-package com.zadania.zadaine3_19;
+package com.zadania.zadanie3_19;
 
 public class Main {
     public static void main(String[] args) {
