@@ -10,10 +10,9 @@ public class Main {
                     int value = bubbleSorting[i];
                     bubbleSorting[i] = bubbleSorting[i + 1];
                     bubbleSorting[i + 1] = value;
-
                 }
             }
-            n = n - 1;
+            n--;
         }
         while (n > 1);
         for (int singleValue: bubbleSorting)
