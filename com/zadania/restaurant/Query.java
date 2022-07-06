@@ -10,8 +10,8 @@ public class Query {
         this.restaurant = restaurant;
     }
 
-    synchronized public int get() {
-
+    synchronized public void get() {
+restaurant.takeOneOrderToCrowd();
     }
 
     synchronized public void put() {

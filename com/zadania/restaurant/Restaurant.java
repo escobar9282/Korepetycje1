@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Restaurant {
-    Random r = new Random();
+    Random dish = new Random();
     private AtomicInteger amountOfIceCreams;
     private AtomicInteger amountOfGyros;
     private AtomicInteger amountOfTortillas;
@@ -35,13 +35,13 @@ public class Restaurant {
     }
 
     public void takeOneOrderToCrowd() {
-        int randomDish = r.nextInt(5);
+        int randomDish = dish.nextInt(5);
         switch (randomDish) {
-            case 0
-            case 1
-            case 2
-            case 3
-            case 4
+            case 0 -> takeIceCreams(dish.nextInt(5) + 2);
+            case 1 -> takeGyros(dish.nextInt(5) + 2);
+            case 2 -> takeTortillas(dish.nextInt(5) + 2);
+            case 3 -> takePizzas(dish.nextInt(5) + 2);
+            case 4 -> takeSteaks(dish.nextInt(5) + 2);
 
         }
     }
@@ -70,19 +70,49 @@ public class Restaurant {
             amountOfGyros.set(amountOfGyros.intValue() - numberOfOrders);
         }
     }
+
     private void takeTortillas(int numberOfOrders) {
         if (numberOfOrders > amountOfTortillas.intValue()) {
             int howManyTortillasWeCantSell = numberOfOrders - amountOfTortillas.intValue();
             moneyEarned.addAndGet(amountOfTortillas.intValue() * Menu.TORTILLA.getPrize());
             moneyLost.addAndGet(howManyTortillasWeCantSell * Menu.TORTILLA.getPrize());
             amountOfTortillas.set(0);
-        }
-        else{
+        } else {
             moneyEarned.addAndGet(numberOfOrders * Menu.TORTILLA.getPrize());
             amountOfTortillas.set(amountOfTortillas.intValue() - numberOfOrders);
         }
     }
-    private void takePizzas(int numberOfOrders)
+
+    private void takePizzas(int numberOfOrders) {
+        if (numberOfOrders > amountOfPizzas.intValue()) {
+            int howManyPizzasWeCantSell = numberOfOrders - amountOfPizzas.intValue();
+            moneyEarned.addAndGet(amountOfPizzas.intValue() * Menu.PIZZA.getPrize());
+            moneyLost.addAndGet(howManyPizzasWeCantSell * Menu.PIZZA.getPrize());
+            amountOfPizzas.set(0);
+        } else {
+            moneyEarned.addAndGet(numberOfOrders * Menu.PIZZA.getPrize());
+            amountOfPizzas.set(amountOfPizzas.intValue() - numberOfOrders);
+        }
+
+    }
+
+    private void takeSteaks(int numberOfOrders) {
+        if (numberOfOrders > amountOfSteaks.intValue()) {
+            int howManySteaksWeCantSell = numberOfOrders - amountOfSteaks.intValue();
+            moneyEarned.addAndGet(amountOfSteaks.intValue() * Menu.STEAK.getPrize());
+            moneyLost.addAndGet(howManySteaksWeCantSell * Menu.STEAK.getPrize());
+            amountOfSteaks.set(0);
+        } else {
+            moneyEarned.addAndGet(numberOfOrders * Menu.STEAK.getPrize());
+            amountOfSteaks.set(amountOfSteaks.intValue() - numberOfOrders);
+        }
+    }
+
+    private void showCurrentInformationAboutRestaurant() {
+        System.out.print("Money earned " + moneyEarned + " money lost " + moneyLost);
+        System.out.println("Current Stock " + amountOfIceCreams + " IceCreams " + amountOfGyros + " Gyros");
+        System.out.println(amountOfTortillas + " Tortillas " + amountOfPizzas + " Pizzas " + amountOfSteaks + " Steaks");
+    }
 
     public AtomicInteger getAmountOfIceCreams() {
         return amountOfIceCreams;
