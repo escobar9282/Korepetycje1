@@ -52,10 +52,11 @@ public class Restaurant {
             moneyEarned.addAndGet(amountOfIceCreams.intValue() * Menu.ICE_CREAM.getPrize());
             moneyLost.addAndGet(howManyIceCreamWeCantSell * Menu.ICE_CREAM.getPrize());
             amountOfIceCreams.set(0);
-        } else {
+        } else  {
             moneyEarned.addAndGet(numberOfOrders * Menu.ICE_CREAM.getPrize());
             amountOfIceCreams.set(amountOfIceCreams.intValue() - numberOfOrders);
         }
+        showCurrentInformationAboutRestaurant();
     }
 
     private void takeGyros(int numberOfOrders) {
@@ -69,6 +70,7 @@ public class Restaurant {
             moneyEarned.addAndGet(numberOfOrders * Menu.GYROS.getPrize());
             amountOfGyros.set(amountOfGyros.intValue() - numberOfOrders);
         }
+        showCurrentInformationAboutRestaurant();
     }
 
     private void takeTortillas(int numberOfOrders) {
@@ -81,6 +83,7 @@ public class Restaurant {
             moneyEarned.addAndGet(numberOfOrders * Menu.TORTILLA.getPrize());
             amountOfTortillas.set(amountOfTortillas.intValue() - numberOfOrders);
         }
+        showCurrentInformationAboutRestaurant();
     }
 
     private void takePizzas(int numberOfOrders) {
@@ -93,6 +96,7 @@ public class Restaurant {
             moneyEarned.addAndGet(numberOfOrders * Menu.PIZZA.getPrize());
             amountOfPizzas.set(amountOfPizzas.intValue() - numberOfOrders);
         }
+        showCurrentInformationAboutRestaurant();
 
     }
 
@@ -106,6 +110,7 @@ public class Restaurant {
             moneyEarned.addAndGet(numberOfOrders * Menu.STEAK.getPrize());
             amountOfSteaks.set(amountOfSteaks.intValue() - numberOfOrders);
         }
+        showCurrentInformationAboutRestaurant();
     }
 
     private void showCurrentInformationAboutRestaurant() {

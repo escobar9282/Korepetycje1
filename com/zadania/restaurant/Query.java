@@ -3,7 +3,7 @@ package com.zadania.restaurant;
 import java.util.Random;
 
 public class Query {
-    Restaurant restaurant;
+   private final Restaurant restaurant;
 
 
     public Query(Restaurant restaurant) {
